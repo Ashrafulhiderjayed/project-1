@@ -8,6 +8,18 @@ const port = 3000
 app.use(express.json());
 app.use(express.text());
 
+const userRouter = express.Router();
+
+userRouter.get('/api/v1/users/create-user', (req: Request, res: Response) =>{
+  const user = req.body;
+  console.log(user);  
+
+  res.json({
+    success: true,
+    message: "User Created Successfully!",
+  })
+}) 
+
 const logger = (req: Request, res: Response, next: Function) => {
   console.log(req.url, req.method, req.hostname); 
   //req.url = /
